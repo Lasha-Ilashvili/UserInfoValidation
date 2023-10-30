@@ -8,13 +8,25 @@ import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var firstName: EditText
+    private lateinit var lastNameText: EditText
+    private lateinit var emailText: EditText
+    private lateinit var usernameText: EditText
+    private lateinit var ageText: EditText
+    private lateinit var errorTxt:TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val save: Button = findViewById(R.id.saveButton)
+        firstName = findViewById(R.id.firstName)
+        emailText = findViewById(R.id.email)
+        lastNameText = findViewById(R.id.lastName)
+        usernameText = findViewById(R.id.username)
+        ageText = findViewById(R.id.age)
 
-        save.setOnClickListener() {
+        val save: Button = findViewById(R.id.saveButton)
+        save.setOnClickListener {
             checkInput()
         }
 
@@ -27,16 +39,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkInput() {
-        val errorTxt: TextView = findViewById(R.id.errorMessage)
+        errorTxt = findViewById(R.id.errorMessage)
         errorTxt.text = getErrorMessages()
     }
 
     private fun getErrorMessages(): String {
-        val firstName: EditText = findViewById(R.id.firstName)
-        val emailText: EditText = findViewById(R.id.email)
-        val lastNameText: EditText = findViewById(R.id.lastName)
-        val usernameText: EditText = findViewById(R.id.username)
-        val ageText: EditText = findViewById(R.id.age)
 
         return when {
             emailText.text.toString().isEmpty() || lastNameText.text.toString().isEmpty() ||
@@ -63,13 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearInputFields() {
-        val firstName: EditText = findViewById(R.id.firstName)
-        val emailText: EditText = findViewById(R.id.email)
-        val lastNameText: EditText = findViewById(R.id.lastName)
-        val usernameText: EditText = findViewById(R.id.username)
-        val ageText: EditText = findViewById(R.id.age)
-        val errorTxt: TextView = findViewById(R.id.errorMessage)
-
         emailText.text.clear()
         firstName.text.clear()
         lastNameText.text.clear()
