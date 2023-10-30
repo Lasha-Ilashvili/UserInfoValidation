@@ -75,6 +75,6 @@ class MainActivity : AppCompatActivity() {
         lastNameText.text.clear()
         usernameText.text.clear()
         ageText.text.clear()
-        errorTxt.text = "" // Clear the error message
+        errorTxt.text = ""
     }
 }
